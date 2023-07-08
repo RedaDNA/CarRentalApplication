@@ -1,0 +1,41 @@
+﻿@model IEnumerable<CarRentalApplication.WebApi.Controllers.CarIndexViewModel>
+<h2>Cars</h2>
+
+<p>
+    <a asp-controller="Car" asp-action="Create" class="btn btn-primary">Add New</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Car Number</th>
+            <th>Type</th>
+            <th>Engine Capacity</th>
+            <th>Color</th>
+            <th>Daily Fare</th>
+            <th>Has Driver</th>
+            <th>Driver Name</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var car in Model)
+        {
+            <tr>
+                <td>@car.CarNumber</td>
+                <td>@car.Type</td>
+                <td>@car.EngineCapacity</td>
+                <td>@car.Color</td>
+                <td>@car.DailyFare</td>
+                <td>@(car.HasDriver ? "Yes" : "No")</td>
+                <td>@(car.HasDriver ? car.Driver.Name : "")</td>
+                <td>
+                    <a asp-controller="Car" asp-action="Edit" asp-route-id="@car.Id">Edit</a> |
+                    <a asp-controller="Car" asp-action="Details" asp-route-id="@car.Id">Details</a> |
+                    <a asp-controller="Car" asp-action="Delete" asp-route-id="@car.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+  
