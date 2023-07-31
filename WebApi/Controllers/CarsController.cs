@@ -29,8 +29,8 @@ namespace CarRentalApplication.WebApi.Controllers
                 EngineCapacity = c.EngineCapacity,
                 Color = c.Color,
                 DailyFare = c.DailyFare,
-               
-                DriverId = c.DriverId
+              
+             
             });
             return Ok(cars);
         }
@@ -52,7 +52,7 @@ namespace CarRentalApplication.WebApi.Controllers
                 Color = car.Color,
                 DailyFare = car.DailyFare,
                
-                DriverId = car.DriverId
+                
             };
             return Ok(carDTO);
         }
@@ -88,7 +88,6 @@ namespace CarRentalApplication.WebApi.Controllers
             car.Color = carDTO.Color;
             car.DailyFare = carDTO.DailyFare;
         
-            car.DriverId = carDTO.DriverId;
             _service.UpdateCar(car);
             return NoContent();
         }
@@ -114,7 +113,7 @@ namespace CarRentalApplication.WebApi.Controllers
                 EngineCapacity = c.EngineCapacity,
                 Color = c.Color,
                 DailyFare = c.DailyFare,
-                DriverId = c.DriverId
+                
             }).ToList();
             var viewModel = new CarIndexViewModel
             {
