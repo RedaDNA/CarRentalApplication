@@ -8,6 +8,6 @@
         public string LicenseNumber { get; set; }
         public int ReplacementDriverId { get; set; }
         public virtual Driver ReplacementDriver { get; set; }
-        public virtual ICollection<Car> Cars { get; set; }
+        public virtual ICollection<CarDriver> CarDrivers { get; set; }
     }
 }
