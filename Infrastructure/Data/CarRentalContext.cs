@@ -19,12 +19,17 @@ namespace CarRentalApplication.Infrastructure.Data
         {
           
             //
-            modelBuilder.Entity<Car>()
-            .HasOne(c => c.Driver)
-            .WithMany(d => d.Cars)
-            .HasForeignKey(c => c.DriverId)
+            modelBuilder.Entity<CarDriver>()
+            .HasOne(c => c.Car)
+            .WithMany(cd => cd.CarDrivers)
+            .HasForeignKey(c => c.CarId)
             .OnDelete(DeleteBehavior.Restrict);
 
+            modelBuilder.Entity<CarDriver>()
+         .HasOne(c => c.Driver)
+         .WithMany(cd => cd.CarDrivers)
+         .HasForeignKey(c => c.DriverId)
+         .OnDelete(DeleteBehavior.Restrict);
             modelBuilder.Entity<Rental>()
                 .HasOne(r => r.Car)
                 .WithMany(c => c.Rentals)
