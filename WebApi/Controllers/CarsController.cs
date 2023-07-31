@@ -20,7 +20,8 @@ namespace CarRentalApplication.WebApi.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-            var cars = _service.GetAllCars().Select(c => new CarDTO
+            var cars = _service.
+                GetAllCars().Select(c => new CarDTO
             {
                 Id = c.Id,
                 CarNumber = c.CarNumber,
@@ -114,7 +115,7 @@ namespace CarRentalApplication.WebApi.Controllers
                 Color = c.Color,
                 DailyFare = c.DailyFare,
                 DriverId = c.DriverId
-            });
+            }).ToList();
             var viewModel = new CarIndexViewModel
             {
                 Cars = cars

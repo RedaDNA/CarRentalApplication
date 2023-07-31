@@ -17,6 +17,8 @@ namespace CarRentalApplication.Infrastructure.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+          
+            //
             modelBuilder.Entity<Car>()
             .HasOne(c => c.Driver)
             .WithMany(d => d.Cars)
@@ -34,6 +36,12 @@ namespace CarRentalApplication.Infrastructure.Data
                 .WithMany(c => c.Rentals)
                 .HasForeignKey(r => r.CustomerId)
                 .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Driver>()
+          .HasOne(d => d.ReplacementDriver)
+          .WithMany()
+          .HasForeignKey(rd => rd.ReplacementDriverId)
+          .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

@@ -16,8 +16,10 @@ namespace CarRentalApplication.Infrastructure.Repositories
         }
 
         public IEnumerable<Car> GetAll()
+            
         {
-            return _context.Cars.ToList();
+            var x = _context.Cars;
+            return x;
         }
 
         public Car GetById(int id)
