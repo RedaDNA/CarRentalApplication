@@ -67,8 +67,7 @@ namespace CarRentalApplication.WebApi.Controllers
                 EngineCapacity = carDTO.EngineCapacity,
                 Color = carDTO.Color,
                 DailyFare = carDTO.DailyFare,
-               
-                DriverId = carDTO.DriverId
+             
             };
             _service.AddCar(car);
             return CreatedAtAction(nameof(GetById), new { id = car.Id }, car);
