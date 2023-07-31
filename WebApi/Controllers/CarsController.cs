@@ -29,14 +29,14 @@ namespace CarRentalApplication.WebApi.Controllers
                 EngineCapacity = c.EngineCapacity,
                 Color = c.Color,
                 DailyFare = c.DailyFare,
-              
-             
+               
+                DriverId = c.DriverId
             });
             return Ok(cars);
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetById(int id)
+        public IActionResult GetById(Guid id)
         {
             var car = _service.GetCarById(id);
             if (car == null)
@@ -52,7 +52,7 @@ namespace CarRentalApplication.WebApi.Controllers
                 Color = car.Color,
                 DailyFare = car.DailyFare,
                
-                
+                DriverId = car.DriverId
             };
             return Ok(carDTO);
         }
@@ -67,14 +67,15 @@ namespace CarRentalApplication.WebApi.Controllers
                 EngineCapacity = carDTO.EngineCapacity,
                 Color = carDTO.Color,
                 DailyFare = carDTO.DailyFare,
-             
+               
+                DriverId = carDTO.DriverId
             };
             _service.AddCar(car);
             return CreatedAtAction(nameof(GetById), new { id = car.Id }, car);
         }
 
         [HttpPut("{id}")]
-        public IActionResult Update(int id, CarDTO carDTO)
+        public IActionResult Update(Guid id, CarDTO carDTO)
         {
             var car = _service.GetCarById(id);
             if (car == null)
@@ -87,12 +88,13 @@ namespace CarRentalApplication.WebApi.Controllers
             car.Color = carDTO.Color;
             car.DailyFare = carDTO.DailyFare;
         
+            car.DriverId = carDTO.DriverId;
             _service.UpdateCar(car);
             return NoContent();
         }
 
         [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+        public IActionResult Delete(Guid id)
         {
             var car = _service.GetCarById(id);
             if (car == null)
@@ -112,7 +114,7 @@ namespace CarRentalApplication.WebApi.Controllers
                 EngineCapacity = c.EngineCapacity,
                 Color = c.Color,
                 DailyFare = c.DailyFare,
-                
+                DriverId = c.DriverId
             }).ToList();
             var viewModel = new CarIndexViewModel
             {

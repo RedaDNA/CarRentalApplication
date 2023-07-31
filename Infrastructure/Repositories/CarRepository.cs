@@ -22,7 +22,7 @@ namespace CarRentalApplication.Infrastructure.Repositories
             return x;
         }
 
-        public Car GetById(int id)
+        public Car GetById(Guid id)
         {
             return _context.Cars.FirstOrDefault(c => c.Id == id);
         }

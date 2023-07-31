@@ -17,7 +17,7 @@ namespace CarRentalApplication.Core.Services
             return _repository.GetAll();
         }
 
-        public Car GetCarById(int id)
+        public Car GetCarById(Guid id)
         {
             return _repository.GetById(id);
         }
