@@ -26,6 +26,13 @@ namespace CarRentalApplication.Infrastructure.Data
             .OnDelete(DeleteBehavior.Restrict).IsRequired(false);
 
             modelBuilder.Entity<Rental>()
+          .HasOne(r => r.Driver)
+          .WithMany(d => d.Rentals)
+          .HasForeignKey(r => r.DriverId)
+          .OnDelete(DeleteBehavior.Restrict).IsRequired(false);
+
+
+            modelBuilder.Entity<Rental>()
                 .HasOne(r => r.Car)
                 .WithMany(c => c.Rentals)
                 .HasForeignKey(r => r.CarId)
